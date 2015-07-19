@@ -17,3 +17,10 @@ rvm list
 gem install bundler --no-ri --no-rdoc
 
 bundle install
+
+rvm alias create acud ruby-2.2.2
+
+echo RVM_PATH=$rvm_path > .env
+echo RVM_WRAPPER=acud >> .env
+
+sudo $rvm_path/wrappers/acud/bundle exec foreman export upstart /etc/init --app acud -u root -p 80
